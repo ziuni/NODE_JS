@@ -173,12 +173,184 @@
 // console.log(result.abs(-10))
 
 
-const timeout=setTimeout(() =>{
-    console.log('1.5초 후 실행')
-}, 1500)
-const intervak = setInterval(() => {
-    console.log('1초마다 실행')
-}, 1000);
-// setTimeout(() => {
-//     clearInterval(interval);//타이머 취소
+// const timeout=setTimeout(() =>{
+//     console.log('1.5초 후 실행')
+// }, 1500)
+// const intervak = setInterval(() => {
+//     console.log('1초마다 실행')
+// }, 1000);
+// // setTimeout(() => {
+// //     clearInterval(interval);//타이머 취소
+// // })
+
+
+// 220726
+
+// // fs모듈의 promises속성
+// const fs = require('fs').promises;
+// fs.readFile('./sam.txt')
+// .then((data) => {
+//     console.log(data)
+//     console.log(data.toString())
 // })
+// .catch((err) => {
+//     console.error(err)
+// })
+
+// // 동기식 파일 읽기
+// const fs = require('fs')
+// console.log("시작")
+// let data = fs.readFileSync("./sam.txt")
+// console.log("1번", data.toString())
+// data = fs.readFileSync("./sam.txt")
+// console.log("2번", data.toString())
+// data = fs.readFileSync("./sam.txt")
+// console.log("3번", data.toString())
+// console.log("끝")
+
+// // 비동기식 파일 읽기
+// const fs = require('fs')
+// console.log("시작")
+// fs.readFile("./sam.txt", (err, data) => {
+//     if(err){
+//         throw err;
+//     }
+//     console.log("1번", data.toString())
+// })
+// fs.readFile("./sam.txt", (err, data) => {
+//     if(err){
+//         throw err;
+//     }
+//     console.log("2번", data.toString())
+// })
+// fs.readFile("./sam.txt", (err, data) => {
+//     if(err){
+//         throw err;
+//     }
+//     console.log("3번", data.toString())
+// })
+// console.log("끝")
+
+// // 비동ㄱㅣ식 방법으로 하되 순서를 유지하고 싶다면
+// const fs = require('fs')
+// console.log("시작")
+// fs.readFile("./sam.txt", (err, data) => {
+//     if(err){
+//         throw err;
+//     }
+//     console.log("1번", data.toString())
+//     fs.readFile("./sam.txt", (err, data) => {
+//         if(err){
+//             throw err;
+//         }
+//         console.log("2번", data.toString());
+//         fs.readFile("./sam.txt", (err, data) => {
+//             if(err){
+//                 throw err;
+//             }
+//             console.log("3번", data.toString())
+//             console.log("끝");
+//         })//3
+//     })//2
+// })//1
+
+// const condition = true; //true is resolve, false is reject
+// // const condition = false
+// const promise = new Promise((resolve, reject) => {
+//     if(condition){
+//         resolve("성공");
+//     }else{
+//         reject("실패");
+//     }
+// });
+// promise
+// .then((message) => {
+//     console.log(message);
+// })
+// .catch((err) => {
+//     console.error(err);
+// })
+// .finally(() => {
+//     console.log("무조건")
+// })
+
+// // 콜백지옥에서 promises 사용
+// const fs = require("fs").promises;
+// console.log("시작");
+// fs.readFile("./sam.txt")
+// .then((data) => {
+//     console.log("1번", data.toString())
+//     return fs.readFile("./sam.txt")
+// })
+// .then((data) => {
+//     console.log("2번", data.toString())
+//     return fs.readFile("./sam.txt")
+// })
+// .then((data) => {
+//     console.log("3번", data.toString())
+//     return fs.readFile("./sam.txt")
+// })
+// .catch((err) => {
+//     console.error(err)
+// })
+
+
+// // 이벤트
+// const EventEmitter = require("events")
+// const myEvent = new EventEmitter()
+// myEvent.on("event1", () => {
+//     console.log("이벤트1")
+// })
+// myEvent.addListener("event2", () => {
+//     console.log("이벤트2");
+// })
+// myEvent.addListener("event2", () => {
+//     console.log("이벤트2 추가")
+// })
+// myEvent.once("event3", () => {
+//     console.log("이벤트3")
+// })
+// myEvent.on("event4", () => {
+//     console.log("이벤트4")
+// })
+// myEvent.removeAllListeners("event4")
+// const listener = () => {
+//     console.log("이벤트5")
+// }
+// myEvent.on("event5", listener)
+// myEvent.removeAllListeners("event5", listener)
+// myEvent.emit("event5")
+// myEvent.emit("event1")
+// myEvent.emit("event2")
+// myEvent.emit("event3")
+// myEvent.emit("event3") //once라 한번만 나옴
+// myEvent.emit("event4") //지워서 실행 안 됨
+// console.log(myEvent.listenerCount("event1"))
+// console.log(myEvent.listenerCount("event2"))
+
+
+// setInterval(() => {
+//     console.log("시작")
+// })
+
+const fs = require("fs")
+setInterval(() => {
+    // unlink() = 파일삭제
+    fs.unlink("./sam1.txt", (err) => {
+        if(err){
+            console.error(err)
+        }
+    })
+}, 500)
+
+
+// 예측 불가능한 에러처리
+process.on("uncaughtException", (err) => {
+    console.error("예기치 못한 에러", err)
+})
+setInterval(() => {
+    throw new Error("무한출력!")
+}, 1000)
+setTimeout(() => {
+    console.log("실행됩니다")
+}, 2000)
