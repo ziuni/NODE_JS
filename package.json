@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "http": "^0.0.1-security"
+    "ejs": "^3.1.8",
+    "http": "^0.0.1-security",
+    "jade": "^1.11.0"
   }
 }
