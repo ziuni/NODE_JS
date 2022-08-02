@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 
 //익스프레스 시작
 var app = express();
-
 app.set('port', process.env.PORT || 4444);
 
 //static 미들웨어 사용

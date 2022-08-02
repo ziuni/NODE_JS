@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mission</title>
+</head>
+<body>
+    <h1>나의 메모</h1>
+    <form action="/process/index" method="post">
+        <table>
+            <tr>
+                <td>작성자</td>
+                <td> <input type="text"></td>
+            </tr>
+            <br>
+            <tr>
+                <td>작성일시</td>
+                <td><input type="datetime-local"><br></td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td><textarea name="content" id="content" cols="30" rows="10"></textarea></td>
+            </tr>
+            <tr>
+                <td><button type="submit">저장</button></td>
+                <td><button type="reset">닫기</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
