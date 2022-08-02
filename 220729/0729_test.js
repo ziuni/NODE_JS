@@ -22,7 +22,7 @@ app.use(expressSession({
 }));
 
 app.get('/*', function(req, res) {
-    res.sendFile(path.resolve(__dirname, 'media', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'media', 'memo_teacher.html'));
 })
 
 var router = express.Router();
