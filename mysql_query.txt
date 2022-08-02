@@ -1,0 +1,69 @@
+create database company;
+
+use company;
+
+create table products(
+id int not null auto_increment primary key,
+name varchar(50) not null,
+modelnumber varchar(15) not null,
+series varchar(30) not null);
+
+show tables;
+
+desc products;
+
+insert into products(name, modelnumber, series) values 
+('eric1', '1234567', 'singer'),
+('thonny', '011789', 'engineer'),
+('bill', '246011', 'officer');
+
+select * from products;
+
+insert into products(name, modelnumber, series) values 
+('suyeon', '3215', 'programmer'),
+('jieun', '3216', 'gamer'),
+('hyori', '040318', 'streamer'),
+('yejin', '3116', 'youtuber'),
+('cho_seo', '3113', 'raccoon'),
+('chans', '3208', 'react'),
+('chany', '219038', 'lolchess');
+
+select * from products where modelnumber like '________';
+//문자의 수
+
+select * from products where modelnumber like '%9';
+// 끝이 9인지
+
+select * from products limit 5;
+//5개 출력
+
+select * from products limit 2, 2;
+//2개 건너뛰고 2개 출력
+
+select * from products limit 3, 5;
+
+//데이터 수정
+update products set series = 'pm' where series like 'r%';
+
+update products set name = 'micle' where name = 'eric1';
+
+//데이터 삭제
+delete from products where modelnumber like '2%';
+
+select * from products where order by name asc;
+select * from products where order by id desc;
+update products set series = 'cute' where name like '%\_%';
+
+//person 테이블 만들기
+create table person(
+    id int not null auto_increment primary key,
+    name varchar(20),
+    age int,
+    married int,
+    create_date datetime default CURRENT_TIMESTAMP
+);
+
+insert into person(name, age, married) values
+('bill', 55, 1),
+('jong', 35, 1),
+('min', 20, 0);

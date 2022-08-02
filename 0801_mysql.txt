@@ -1,0 +1,437 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 19
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database company;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use company;
+Database changed
+mysql> create table products(
+    -> id int not null auto_increment primary key,
+    -> name varchar(50) not null.
+    -> modelnumber varchar(15) not null,
+    -> series varchar(30) not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.
+modelnumber varchar(15) not null,
+series varchar(30) not null)' at line 3
+mysql> create table products(
+    -> id int not null auto_increment primary key,
+    -> name varchar(50) not null,
+    -> modelnumber varchar(15) not null,
+    -> series varchar(30) not null);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_company |
++-------------------+
+| products          |
++-------------------+
+1 row in set (0.01 sec)
+
+mysql> desc products;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| id          | int         | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(50) | NO   |     | NULL    |                |
+| modelnumber | varchar(15) | NO   |     | NULL    |                |
+| series      | varchar(30) | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> insert into products(name, modelnumber, series) values
+    -> ('eric1', '1234567', 'singer'),
+    -> ('thonny', '011789', 'engineer'),
+    -> ('bill', '246011', 'officer');
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from products;
++----+--------+-------------+----------+
+| id | name   | modelnumber | series   |
++----+--------+-------------+----------+
+|  1 | eric1  | 1234567     | singer   |
+|  2 | thonny | 011789      | engineer |
+|  3 | bill   | 246011      | officer  |
++----+--------+-------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> insert into products(name, modelnumber, series) values
+    -> ('suyeon', '3215', 'programmer'),
+    -> ('jieun', '3216', 'gamer'),
+    -> ('hyori', '040318', 'streamer'),
+    -> ('yejin', '3116', 'youtuber'),
+    -> ('cho_seo', '3112', 'raccon'),
+    -> ('chans', '3208', 'react'),
+    -> ('chany', '219038', 'lolchess');
+Query OK, 7 rows affected (0.01 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> ('chans', '3208', 'react'),
+    -> ^Z^C
+mysql> desc products;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| id          | int         | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(50) | NO   |     | NULL    |                |
+| modelnumber | varchar(15) | NO   |     | NULL    |                |
+| series      | varchar(30) | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select *from products;
++----+---------+-------------+------------+
+| id | name    | modelnumber | series     |
++----+---------+-------------+------------+
+|  1 | eric1   | 1234567     | singer     |
+|  2 | thonny  | 011789      | engineer   |
+|  3 | bill    | 246011      | officer    |
+|  4 | suyeon  | 3215        | programmer |
+|  5 | jieun   | 3216        | gamer      |
+|  6 | hyori   | 040318      | streamer   |
+|  7 | yejin   | 3116        | youtuber   |
+|  8 | cho_seo | 3112        | raccon     |
+|  9 | chans   | 3208        | react      |
+| 10 | chany   | 219038      | lolchess   |
++----+---------+-------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select *from products where modelnumber like '%9';
++----+--------+-------------+----------+
+| id | name   | modelnumber | series   |
++----+--------+-------------+----------+
+|  2 | thonny | 011789      | engineer |
++----+--------+-------------+----------+
+1 row in set (0.00 sec)
+
+mysql> select *from products where modelnumber like '________';
+Empty set (0.00 sec)
+
+mysql> select *from products where modelnumber like '_______';
++----+-------+-------------+--------+
+| id | name  | modelnumber | series |
++----+-------+-------------+--------+
+|  1 | eric1 | 1234567     | singer |
++----+-------+-------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select *from products where modelnumber like '______';
++----+--------+-------------+----------+
+| id | name   | modelnumber | series   |
++----+--------+-------------+----------+
+|  2 | thonny | 011789      | engineer |
+|  3 | bill   | 246011      | officer  |
+|  6 | hyori  | 040318      | streamer |
+| 10 | chany  | 219038      | lolchess |
++----+--------+-------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from products limit 5;
++----+--------+-------------+------------+
+| id | name   | modelnumber | series     |
++----+--------+-------------+------------+
+|  1 | eric1  | 1234567     | singer     |
+|  2 | thonny | 011789      | engineer   |
+|  3 | bill   | 246011      | officer    |
+|  4 | suyeon | 3215        | programmer |
+|  5 | jieun  | 3216        | gamer      |
++----+--------+-------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from products limit 2,2;
++----+--------+-------------+------------+
+| id | name   | modelnumber | series     |
++----+--------+-------------+------------+
+|  3 | bill   | 246011      | officer    |
+|  4 | suyeon | 3215        | programmer |
++----+--------+-------------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from products limit 3,5
+    -> ;
++----+---------+-------------+------------+
+| id | name    | modelnumber | series     |
++----+---------+-------------+------------+
+|  4 | suyeon  | 3215        | programmer |
+|  5 | jieun   | 3216        | gamer      |
+|  6 | hyori   | 040318      | streamer   |
+|  7 | yejin   | 3116        | youtuber   |
+|  8 | cho_seo | 3112        | raccon     |
++----+---------+-------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from products;
++----+---------+-------------+------------+
+| id | name    | modelnumber | series     |
++----+---------+-------------+------------+
+|  1 | eric1   | 1234567     | singer     |
+|  2 | thonny  | 011789      | engineer   |
+|  3 | bill    | 246011      | officer    |
+|  4 | suyeon  | 3215        | programmer |
+|  5 | jieun   | 3216        | gamer      |
+|  6 | hyori   | 040318      | streamer   |
+|  7 | yejin   | 3116        | youtuber   |
+|  8 | cho_seo | 3112        | raccon     |
+|  9 | chans   | 3208        | react      |
+| 10 | chany   | 219038      | lolchess   |
++----+---------+-------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> update products set series = 'pm' where series like 'r%';
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from products;
++----+---------+-------------+------------+
+| id | name    | modelnumber | series     |
++----+---------+-------------+------------+
+|  1 | eric1   | 1234567     | singer     |
+|  2 | thonny  | 011789      | engineer   |
+|  3 | bill    | 246011      | officer    |
+|  4 | suyeon  | 3215        | programmer |
+|  5 | jieun   | 3216        | gamer      |
+|  6 | hyori   | 040318      | streamer   |
+|  7 | yejin   | 3116        | youtuber   |
+|  8 | cho_seo | 3112        | pm         |
+|  9 | chans   | 3208        | pm         |
+| 10 | chany   | 219038      | lolchess   |
++----+---------+-------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> update products set name = 'micle' where name = 'eric1';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from products;
++----+---------+-------------+------------+
+| id | name    | modelnumber | series     |
++----+---------+-------------+------------+
+|  1 | micle   | 1234567     | singer     |
+|  2 | thonny  | 011789      | engineer   |
+|  3 | bill    | 246011      | officer    |
+|  4 | suyeon  | 3215        | programmer |
+|  5 | jieun   | 3216        | gamer      |
+|  6 | hyori   | 040318      | streamer   |
+|  7 | yejin   | 3116        | youtuber   |
+|  8 | cho_seo | 3112        | pm         |
+|  9 | chans   | 3208        | pm         |
+| 10 | chany   | 219038      | lolchess   |
++----+---------+-------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> delete from products where modelnumber like '2%'
+    -> ;
+Query OK, 2 rows affected (0.00 sec)
+
+mysql> select * from products;
++----+---------+-------------+------------+
+| id | name    | modelnumber | series     |
++----+---------+-------------+------------+
+|  1 | micle   | 1234567     | singer     |
+|  2 | thonny  | 011789      | engineer   |
+|  4 | suyeon  | 3215        | programmer |
+|  5 | jieun   | 3216        | gamer      |
+|  6 | hyori   | 040318      | streamer   |
+|  7 | yejin   | 3116        | youtuber   |
+|  8 | cho_seo | 3112        | pm         |
+|  9 | chans   | 3208        | pm         |
++----+---------+-------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> update products set series = 'raccoon' where name like '%_%';
+Query OK, 8 rows affected (0.01 sec)
+Rows matched: 8  Changed: 8  Warnings: 0
+
+mysql> select * from products;
++----+---------+-------------+---------+
+| id | name    | modelnumber | series  |
++----+---------+-------------+---------+
+|  1 | micle   | 1234567     | raccoon |
+|  2 | thonny  | 011789      | raccoon |
+|  4 | suyeon  | 3215        | raccoon |
+|  5 | jieun   | 3216        | raccoon |
+|  6 | hyori   | 040318      | raccoon |
+|  7 | yejin   | 3116        | raccoon |
+|  8 | cho_seo | 3112        | raccoon |
+|  9 | chans   | 3208        | raccoon |
++----+---------+-------------+---------+
+8 rows in set (0.00 sec)
+
+mysql>
+mysql> update products set series = 'raccoon' where name like 'cho%';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> select * from products;
++----+---------+-------------+---------+
+| id | name    | modelnumber | series  |
++----+---------+-------------+---------+
+|  1 | micle   | 1234567     | raccoon |
+|  2 | thonny  | 011789      | raccoon |
+|  4 | suyeon  | 3215        | raccoon |
+|  5 | jieun   | 3216        | raccoon |
+|  6 | hyori   | 040318      | raccoon |
+|  7 | yejin   | 3116        | raccoon |
+|  8 | cho_seo | 3112        | raccoon |
+|  9 | chans   | 3208        | raccoon |
++----+---------+-------------+---------+
+8 rows in set (0.00 sec)
+
+mysql>
+mysql> select * from products where modelnumber like 'ch';
+Empty set (0.00 sec)
+
+mysql>
+mysql> update products set series = 'raccoon' where name like '%%_%%';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 8  Changed: 0  Warnings: 0
+
+mysql> update products set series = 'raccoon' where name like '%%_%%';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 8  Changed: 0  Warnings: 0
+
+mysql> update products set series = 'raccoon' where name like '%''_';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> drop table products;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table products(
+    -> id int not null auto_increment primary key,
+    -> name varchar(50) not null,
+    -> modelnumber varchar(15) not null,
+    -> series varchar(30) not null);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into products(name, modelnumber, series) values
+    -> ('eric1', '1234567', 'singer'),
+    -> ('thonny', '011789', 'engineer'),
+    -> ('bill', '246011', 'officer');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> insert into products(name, modelnumber, series) values
+    -> ('suyeon', '3215', 'programmer'),
+    -> ('jieun', '3216', 'gamer'),
+    -> ('hyori', '040318', 'streamer'),
+    -> ('yejin', '3116', 'youtuber'),
+    -> ('cho_seo', '3113', 'raccoon'),
+    -> ('chans', '3208', 'react'),
+    -> ('chany', '219038', 'lolchess');
+Query OK, 7 rows affected (0.00 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> desc products;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| id          | int         | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(50) | NO   |     | NULL    |                |
+| modelnumber | varchar(15) | NO   |     | NULL    |                |
+| series      | varchar(30) | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from products;
++----+---------+-------------+------------+
+| id | name    | modelnumber | series     |
++----+---------+-------------+------------+
+|  1 | eric1   | 1234567     | singer     |
+|  2 | thonny  | 011789      | engineer   |
+|  3 | bill    | 246011      | officer    |
+|  4 | suyeon  | 3215        | programmer |
+|  5 | jieun   | 3216        | gamer      |
+|  6 | hyori   | 040318      | streamer   |
+|  7 | yejin   | 3116        | youtuber   |
+|  8 | cho_seo | 3113        | raccoon    |
+|  9 | chans   | 3208        | react      |
+| 10 | chany   | 219038      | lolchess   |
++----+---------+-------------+------------+
+10 rows in set (0.00 sec)
+
+mysql>
+mysql> select products set series = 'raccoon' where name like '%\_';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'set series = 'raccoon' where name like '%\_'' at line 1
+mysql> update products set series = '1111' where name like '%\_%';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from products;
++----+---------+-------------+------------+
+| id | name    | modelnumber | series     |
++----+---------+-------------+------------+
+|  1 | eric1   | 1234567     | singer     |
+|  2 | thonny  | 011789      | engineer   |
+|  3 | bill    | 246011      | officer    |
+|  4 | suyeon  | 3215        | programmer |
+|  5 | jieun   | 3216        | gamer      |
+|  6 | hyori   | 040318      | streamer   |
+|  7 | yejin   | 3116        | youtuber   |
+|  8 | cho_seo | 3113        | 1111       |
+|  9 | chans   | 3208        | react      |
+| 10 | chany   | 219038      | lolchess   |
++----+---------+-------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> update products set series = 'cute' where name like '%\_%';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from products;
++----+---------+-------------+------------+
+| id | name    | modelnumber | series     |
++----+---------+-------------+------------+
+|  1 | eric1   | 1234567     | singer     |
+|  2 | thonny  | 011789      | engineer   |
+|  3 | bill    | 246011      | officer    |
+|  4 | suyeon  | 3215        | programmer |
+|  5 | jieun   | 3216        | gamer      |
+|  6 | hyori   | 040318      | streamer   |
+|  7 | yejin   | 3116        | youtuber   |
+|  8 | cho_seo | 3113        | cute       |
+|  9 | chans   | 3208        | react      |
+| 10 | chany   | 219038      | lolchess   |
++----+---------+-------------+------------+
+10 rows in set (0.00 sec)
+
+mysql>
+mysql> select * from products where order by desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by desc' at line 1
+mysql> select * from products order by desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc' at line 1
+mysql> select * from products order by if desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc' at line 1
+mysql> select * from products order by id desc;
++----+---------+-------------+------------+
+| id | name    | modelnumber | series     |
++----+---------+-------------+------------+
+| 10 | chany   | 219038      | lolchess   |
+|  9 | chans   | 3208        | react      |
+|  8 | cho_seo | 3113        | cute       |
+|  7 | yejin   | 3116        | youtuber   |
+|  6 | hyori   | 040318      | streamer   |
+|  5 | jieun   | 3216        | gamer      |
+|  4 | suyeon  | 3215        | programmer |
+|  3 | bill    | 246011      | officer    |
+|  2 | thonny  | 011789      | engineer   |
+|  1 | eric1   | 1234567     | singer     |
++----+---------+-------------+------------+
+10 rows in set (0.00 sec)
+
+mysql>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Data</title>
+</head>
+<body>
+    <form method="post">
+        <fieldset>
+            <legend>Update Data</legend>
+            <table>
+                <tr>
+                    <td>Id</td>
+                    <td><input type="text" name="id" value="<%= data.id %>" disabled /></td>
+                </tr>
+                <tr>
+                    <td>Nmae</td>
+                    <td><input type="text" name="name" value="<%= data.name %>" /></td>
+                </tr>
+                <tr>
+                    <td>Model Number</td>
+                    <td><input type="text" name="modelnumber" value="<%= data.modelnumber %>" /></td>
+                </tr>
+                <tr>
+                    <td>series</td>
+                    <td><input type="text" name="series" value="<%= data.series %>" /></td>
+                </tr>
+            </table>
+            <input type="submit">
+        </fieldset>
+    </form>
+</body>
+</html>
