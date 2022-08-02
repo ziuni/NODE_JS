@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({
 
 // 서버를 실행합니다.
 app.listen(4444, function () {
-  console.log('server running at http://127.0.0.1:4444');
+  console.log('server running at localhost:4444');
 });
 
 // database query 실행
@@ -70,9 +70,8 @@ app.post('/insert',function(req,res){
 ///// 데이터수정 get
 app.get('/update/:id', function(req,res) {
     fs.readFile('update.html', 'utf8', function(err, data) {
-        client.query('select * from products where id = ?',[
-            req.params.id
-        ], function(err, results) {
+        client.query('select * from products where id = ?', [req.params.id],
+        function(err, results) {
             res.send(ejs.render(data, {
                 data:results[0]
             }));

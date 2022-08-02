@@ -1,0 +1,5 @@
+db.comments.insertMany({
+	{id:1, name:"bill", age:55, married:1},
+	{id:2, name:"jong", age:35, married:1},
+	{id:3, name:"min", age:20, married:0}
+})

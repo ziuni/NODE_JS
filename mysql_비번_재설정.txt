@@ -1,0 +1,73 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 28
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> grant all privileges on . to 'root'@'%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '. to 'root'@'%'' at line 1
+mysql> use mysql
+Database changed
+mysql> grant all privileges on . to 'root'@'%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '. to 'root'@'%'' at line 1
+mysql> create user 'mirim'@'%' identified with mysql_native_password by ''mirim;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mirim' at line 1
+mysql> create user 'mirim' @ '%' identified with mysql_native_password by ''mirim;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''%' identified with mysql_native_password by ''mirim' at line 1
+mysql> show global variables like 'port'
+    -> ;
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| port          | 3306  |
++---------------+-------+
+1 row in set, 1 warning (0.01 sec)
+
+mysql> set password for 'root' @ '%' = password('mirim')
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''%' = password('mirim')' at line 1
+mysql> UPDATE mysql.user SET authentication_string=PASSWORD('패스워드') WHERE User='아이디' AND Host='%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('패스워드') WHERE User='아이디' AND Host='%'' at line 1
+mysql> UPDATE mysql.user SET authentication_string=PASSWORD('mirim') WHERE User='root' AND Host='%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('mirim') WHERE User='root' AND Host='%'' at line 1
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select host, user, authentication_string from user;
++-----------+------------------+------------------------------------------------------------------------+
+| host      | user             | authentication_string                                                  |
++-----------+------------------+------------------------------------------------------------------------+
+| %         | mirim            | $A$005$8dR0_ JM4pLaOMyVuR.NL1gIPatEltpg1BOqHuwFBAEHhiOm9ASzdHNA |
+| localhost | mysql.infoschema | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED |
+| localhost | mysql.session    | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED |
+| localhost | mysql.sys        | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED |
+| localhost | root             | *F25B3CA8433631B3F70196603DF23749DE6BC0BF                              |
++-----------+------------------+------------------------------------------------------------------------+
+5 rows in set (0.00 sec)
+
+mysql> alter user 'root'@'localhost' identified with mysql_native_password by 'mirim';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select host, user, authentication_string from user;
++-----------+------------------+------------------------------------------------------------------------+
+| host      | user             | authentication_string                                                  |
++-----------+------------------+------------------------------------------------------------------------+
+| %         | mirim            | $A$005$8dR0_ JM4pLaOMyVuR.NL1gIPatEltpg1BOqHuwFBAEHhiOm9ASzdHNA |
+| localhost | mysql.infoschema | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED |
+| localhost | mysql.session    | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED |
+| localhost | mysql.sys        | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED |
+| localhost | root             | *F25B3CA8433631B3F70196603DF23749DE6BC0BF                              |
++-----------+------------------+------------------------------------------------------------------------+
+5 rows in set (0.00 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql>
