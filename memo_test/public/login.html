@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게임테스트</title>
+    
+    <link rel="shortcut icon" href="./img/gametest _icon_32.ico" type="image/x-icon" />
+    <link rel="icon" href="./img/gametest _icon_32.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" href="./font/font.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/body.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/loginform.css">
+
+    <script src="./js/script.js"></script>
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- 헤더 -->
+    <div id="header">
+        <div class="menubar">
+            <a href="./index.html" id="logo-img">
+                <img src="./img/gmaetest_text.ico" alt="헤더 로고">
+            </a>
+
+            <div class="gnb">
+                <ul class="dropdown">
+                    
+                    <li class="menu1">
+                        <a href="javascript:void(0)" class="menu-big">테스트</a>
+                        <ul class="menu-small">
+                            <li><a href="./gametest.html">나에게 맞는 게임은?</a></li>
+                            <li><a href="./loltest.html">롤에서 나의 라인은?</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu2">
+                        <a href="./#" class="menu-big">게시판</a>
+                        <ul class="menu-small">
+                            <li><a href="./#">글쓰기</a></li>
+                            <li><a href="./#">게시판 보기</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu3">
+                        <a href="./#" class="menu-big">브랜드</a>
+                        <ul class="menu-small">
+                            <li><a href="">ETG</a></li>
+                            <li><a href="">토뱅토</a></li>
+                            <li><a href="">미리모</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div><a href="./login.html" id="login-img"><img src="./img/login_icon.png" alt="로그인 이미지"></a></div>
+        </div>
+    </div>
+    <!-- 헤더 끝 -->
+
+    <!-- 내용 묶기 -->
+    <div id="contents">
+        <h1>로그인</h1>
+        <br>
+        <form action="login.php" method="post">
+            <div class="loginclass"><input type="email" name="email" placeholder="이메일 입력" class="inputform"></div>
+            <div class="loginclass"><input type="password" name="password" placeholder="비밀번호 입력" class="inputform"></div>
+            <button type="submit" class="btn">로그인</button>
+        </form>
+        <br>
+            회원이 아니신가요? <a href="signup.html" style="text-decoration: underline;">회원가입하기</a>
+    </div>
+
+    <!-- 푸터 -->
+    <div id="footer">
+        <div class="wrap-footer">
+            <!-- <img src="./img/gametest_icon.png" id="footer-logo" alt="푸터 로고"> -->
+            <ul>
+                <li>s2016@e-mirim.hs.kr</li>
+                <li>github.com/ziuni</li>
+                <li>미림 마이스터 고등학교</li>
+                <li>(08821) 서울시 관악구 호암로 546 (신림동)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    header();
+</script>

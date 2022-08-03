@@ -44,7 +44,7 @@ function connectDB() {
 
     MongoClient.connect(databaseUrl, function (err, db) {
         if(err) throw err;
-        console.log('데이터베이스에 연결되었습니다.:'+databaseUrl);
+        console.log('데이터베이스에 연결되었습니다. : '+databaseUrl);
         database=db;
 
     });

@@ -1,0 +1,31 @@
+.inputform{
+    background-color: #F0F0F0;
+    font-family: 'EliceDigitalBaeum';
+    border: 0;
+    width: 20%;
+    height: 50px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.loginclass{
+    padding-bottom: 10px;
+}
+
+.signupclass{
+    text-align: left;
+    padding-left: 440px;
+}
+
+.signupform{
+    border: 1px solid #787878;
+    background-color: white;
+    font-family: 'EliceDigitalBaeum';
+    width: 20%;
+    text-align: left;
+    padding-left: 3px;
+}
+
+span{
+    font-size:xx-small;
+}

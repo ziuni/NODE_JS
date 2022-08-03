@@ -27,7 +27,7 @@ app.use(cookieParser());
 //세션 환경 세팅
 //세션은 서버쪽에 저장하는 것을 말하는데, 파일로 저장 할 수도 있고 레디스라고 하는 메모리DB등 다양한 저장소에 저장 할 수가 있는데
 app.use(expressSession({
-    secret: 'my key', 
+    secret: 'my key', 
     //이때의 옵션은 세션에 세이브 정보를 저장할때 할때 파일을 만들꺼냐 , 아니면 미리 만들어 놓을꺼냐 등에 대한 옵션들임    
     resave: true,
     saveUninitialized: true
@@ -38,7 +38,7 @@ app.use(expressSession({
 app.use(cors());
 
 //파일 업로드를 위한 설정
-var fileStorage =  multer.diskStorage({
+var fileStorage = multer.diskStorage({
     destination: function (req,file, callback) {
         callback(null, 'uploads');      //목적지 폴더 지정 : 'uploads' 를 목적지로 정한다(이쪽으로 파일이 오게됨)
     },
@@ -63,7 +63,7 @@ var upload = multer( {
 
 //라우트를 미들웨어에 등록하기 전에 라우터에 설정할 경로와 함수를 등록한다
 //라우터를 사용 (특정 경로로 들어오는 요청에 대하여 함수를 수행 시킬 수가 있는 기능을 express 가 제공해 주는것)
-var router = express.Router(); 
+var router = express.Router();
 
 //upload.array : Accept an array of files, all with the name fieldName.
 //Optionally error out if more than maxCount files are uploaded.
@@ -127,7 +127,7 @@ function (req, res) {
         };
         res.writeHead(200, { "Content-Type": "text/html;characterset=utf8" });
         res.write('<h1>Login Success</h1>');
-        res.write('[ID] : ' + paramID + ' [PW] : ' + pw);
+        res.write('[ID] : ' + paramID + ' [PW] : ' + pw);
         res.write('<a href="/process/score">Move</a>');
         res.end();
     }
@@ -145,12 +145,12 @@ router.route('/process/logout').get(//설정된 쿠키정보를 본다
                     }
                     console.log('세션 삭제 성공');
                     //파일 지정시 제일 앞에 / 를 붙여야 root 즉 public 안에서부터 찾게 된다
-                    res.redirect('/Login2.html');
+                    res.redirect('/login2.html');
                 }
                 ); //세션정보 삭제
             } else {
                 console.log('로긴 안되어 있음');
-                res.redirect('/Login2.html');
+                res.redirect('/login2.html');
             }
     }
 );
@@ -158,7 +158,7 @@ router.route('/process/logout').get(//설정된 쿠키정보를 본다
     
 //라우터 미들웨어 등록하는 구간에서는 라우터를 모두  등록한 이후에 다른 것을 세팅한다
 //그렇지 않으면 순서상 라우터 이외에 다른것이 먼저 실행될 수 있다
-app.use('/', router);    //라우트 미들웨어를 등록한다
+app.use('/', router);    //라우트 미들웨어를 등록한다
 app.all('*',function(req, res) {
     res.status(404).send('<h1> 요청 페이지 없음 </h1>');
 });

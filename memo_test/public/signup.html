@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    
+    <link rel="shortcut icon" href="./img/gametest _icon_32.ico" type="image/x-icon" />
+    <link rel="icon" href="./img/gametest _icon_32.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" href="./font/font.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/body.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/loginform.css">
+
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="/js/script.js"></script>
+</head>
+<body>
+    <!-- 내용 묶기 -->
+    <div id="contents">
+        <h1>회원가입하기</h1>
+        <br>
+        <form action="update.php" method="post">
+            <div class="loginclass"><div class="signupclass">닉네임</div><input type="text" name="user_name" class="signupform"></div>
+            <div class="loginclass"><div class="signupclass">이메일</div><input type="email" name="user_email" class="signupform"></div>
+            <div class="loginclass"><div class="signupclass">비밀번호</div><input type="password" name="user_pass" id="pass1" class="signupform" onchange="check_pw()"></div>
+            <div class="loginclass">
+                <div class="signupclass">비밀번호 확인
+                    &nbsp;<span id="check">123</span>
+                </div>
+                <input type="password" name="user_pass2" id="pass2" class="signupform" onchange="check_pw()">
+            </div>
+            <button type="button" class="btn" onchange="check_pw()">회원가입</button>
+        </form>
+        <br>이미 회원이신가요? <a href="login.html" style="text-decoration: underline;">로그인하기</a>
+    </div>
+
+    <!-- 푸터 -->
+    <div id="footer">
+        <div class="wrap-footer">
+            <!-- <img src="./img/gametest_icon.png" id="footer-logo" alt="푸터 로고"> -->
+            <ul>
+                <li>s2016@e-mirim.hs.kr</li>
+                <li>github.com/ziuni</li>
+                <li>미림 마이스터 고등학교</li>
+                <li>(08821) 서울시 관악구 호암로 546 (신림동)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    header();
+</script>

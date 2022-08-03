@@ -36,7 +36,7 @@ app.use('/', router);
 router.route('/process/login').post(function(req, res){
     console.log('/process/login 라우팅 함수 받음');
     var parmId = req.query.id||req.body.id; // get 혹은 post로 받기
-    var parmPw = req.query.pass||req.body.pass;
+    var parmPw = req.query.password||req.body.password;
 
     console.log('요청 파라메터 : '+parmId+', '+parmPw);
     if(req.session.user){
@@ -59,7 +59,7 @@ router.route('/process/login').post(function(req, res){
 });
 
 // -----------2. 로그아웃 라우터-----------
-router.route('/process/logout').get(function(req, res){
+router.route('/logout').get(function(req, res){
     console.log('/process/logout 라우팅 함수 받음');
 
     if(req.session.user){
@@ -77,7 +77,7 @@ router.route('/process/logout').get(function(req, res){
 })
 
 // -----------3. 점수 확인 라우터-----------
-router.route('/process/score/').get(function(req, res){
+router.route('/score').get(function(req, res){
     console.log('/process/score/ 라우팅 함수 받음');
     if(req.session.user){
         res.redirect('/media/score.html');
