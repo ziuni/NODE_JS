@@ -3,3 +3,8 @@ db.comments.insertMany({
 	{id:2, name:"jong", age:35, married:1},
 	{id:3, name:"min", age:20, married:0}
 })
+
+
+아래와 같이 find에 {} 오브젝트를 추가하면 where절의 기능을 함
+$gt(>), $lt(<), $gte(>=), $lte(<=)  :  값
+//[출처] [09/23]몽고DB 4강 - 기초 쿼리1|작성자 멜랑

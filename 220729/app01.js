@@ -29,7 +29,7 @@ var router = express.Router();
 app.use('/', router);
 
 // 1. 로그인 라우터 //세션추가
-router.route('/process/login').post(function(req, res){
+router.route('/media/process/login').post(function(req, res){
     console.log('/process/login 라우팅 함수 호출');
     var paramId = req.query.id || req.body.id;
     var paramPw = req.query.password || req.body.password;

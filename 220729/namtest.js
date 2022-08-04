@@ -60,7 +60,7 @@ function (req, res) {
         res.writeHead(200, { "Content-Type": "text/html;characterset=utf8" });
         res.write('<h1>already Login</h1>');
         res.write('[ID] : ' + paramID + ' [PW] : ' + pw);
-        res.write('<a href="/process/score">Move</a>');
+        res.write('<br><a href="/process/score">Move</a>');
         res.end();
     } else {
         req.session.user = {

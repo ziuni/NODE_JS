@@ -1,3 +1,11 @@
 몽고쓸거얌
-이름(닉네임) 
-비번
+memo_user
+userid아이디(안겹침)
+username이름(닉네임) 겹쳐도됨
+userpw비번 겹쳐도됨
+
+memo_save
+userid아이디 외래키 - 몽고디비는 외래키가 없음...(???????)
+date날짜
+title제목
+contents내용

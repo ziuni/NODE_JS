@@ -17,7 +17,7 @@ app.use('/media', static(path.join(__dirname, 'media')));
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 
-app.get('/*', function(req, res) {
+app.get('/', function(req, res) {
     res.sendFile(path.resolve(__dirname, 'media', 'login.html'));
 })
 

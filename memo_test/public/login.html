@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게임테스트</title>
+    <title>LOGIN</title>
     
     <link rel="shortcut icon" href="./img/gametest _icon_32.ico" type="image/x-icon" />
     <link rel="icon" href="./img/gametest _icon_32.ico" type="image/x-icon" />
 
-    <link rel="stylesheet" href="./font/font.css">
+    <link rel="stylesheet" href="./css/font.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/body.css">
     <link rel="stylesheet" href="./css/footer.css">
@@ -20,55 +20,13 @@
     <script src="./js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <!-- 헤더 -->
-    <div id="header">
-        <div class="menubar">
-            <a href="./index.html" id="logo-img">
-                <img src="./img/gmaetest_text.ico" alt="헤더 로고">
-            </a>
-
-            <div class="gnb">
-                <ul class="dropdown">
-                    
-                    <li class="menu1">
-                        <a href="javascript:void(0)" class="menu-big">테스트</a>
-                        <ul class="menu-small">
-                            <li><a href="./gametest.html">나에게 맞는 게임은?</a></li>
-                            <li><a href="./loltest.html">롤에서 나의 라인은?</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="menu2">
-                        <a href="./#" class="menu-big">게시판</a>
-                        <ul class="menu-small">
-                            <li><a href="./#">글쓰기</a></li>
-                            <li><a href="./#">게시판 보기</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="menu3">
-                        <a href="./#" class="menu-big">브랜드</a>
-                        <ul class="menu-small">
-                            <li><a href="">ETG</a></li>
-                            <li><a href="">토뱅토</a></li>
-                            <li><a href="">미리모</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
-
-            <div><a href="./login.html" id="login-img"><img src="./img/login_icon.png" alt="로그인 이미지"></a></div>
-        </div>
-    </div>
-    <!-- 헤더 끝 -->
 
     <!-- 내용 묶기 -->
     <div id="contents">
         <h1>로그인</h1>
         <br>
-        <form action="login.php" method="post">
-            <div class="loginclass"><input type="email" name="email" placeholder="이메일 입력" class="inputform"></div>
+        <form action="/process/login" method="post">
+            <div class="loginclass"><input type="text" name="id" placeholder="아이디 입력" class="inputform"></div>
             <div class="loginclass"><input type="password" name="password" placeholder="비밀번호 입력" class="inputform"></div>
             <button type="submit" class="btn">로그인</button>
         </form>
