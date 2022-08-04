@@ -1,0 +1,268 @@
+MongoDB shell version v5.0.10
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b96fdb9a-f52f-434f-ad80-dcff473ea9be") }
+MongoDB server version: 5.0.10
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2022-08-04T08:40:30.533+09:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> db
+test
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+nodejs  0.000GB
+> use local
+switched to db local
+> show tables
+startup_log
+users
+ysers
+> use nodejs
+switched to db nodejs
+> show tables
+comment
+comments
+users
+> db
+nodejs
+> db.memo_user.insert({id: "asdf", name: "asdf", password: "1234"});
+WriteResult({ "nInserted" : 1 })
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+nodejs  0.000GB
+> show tables
+comment
+comments
+memo_user
+users
+> db.memo_user.getIndexes()
+[ { "v" : 2, "key" : { "_id" : 1 }, "name" : "_id_" } ]
+> db.memo_user.createIndex({id:"asdf"}, {unique: true})
+{
+        "ok" : 0,
+        "errmsg" : "Error in specification { key: { id: \"asdf\" }, name: \"id_asdf\", unique: true } :: caused by :: Unknown index plugin 'asdf'",
+        "code" : 67,
+        "codeName" : "CannotCreateIndex"
+}
+> db.memo_user.drop()
+true
+> show tables
+comment
+comments
+users
+> db.memo_user.createIndex({id:"asdf"}, {unique: true});
+{
+        "ok" : 0,
+        "errmsg" : "Error in specification { key: { id: \"asdf\" }, name: \"id_asdf\", unique: true } :: caused by :: Unknown index plugin 'asdf'",
+        "code" : 67,
+        "codeName" : "CannotCreateIndex"
+}
+> db.memo_user.insert({name: "asdf", password: "1234"});
+WriteResult({ "nInserted" : 1 })
+> db.memo_user.createIndex({id:"asdf"}, {unique: true});
+{
+        "ok" : 0,
+        "errmsg" : "Error in specification { key: { id: \"asdf\" }, name: \"id_asdf\", unique: true } :: caused by :: Unknown index plugin 'asdf'",
+        "code" : 67,
+        "codeName" : "CannotCreateIndex"
+}
+> db.memo_user.getIndexes()
+[ { "v" : 2, "key" : { "_id" : 1 }, "name" : "_id_" } ]
+> db.memo_user.dropIndex("_id" : 1);
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:29
+> db.memo_user.dropIndex({"_id" : 1});
+{
+        "ok" : 0,
+        "errmsg" : "cannot drop _id index",
+        "code" : 72,
+        "codeName" : "InvalidOptions"
+}
+> db.memo_user.drop()
+true
+> db.getCollection('memo_user').createIndex({id:1}, {unique:true});
+{
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "createdCollectionAutomatically" : true,
+        "ok" : 1
+}
+> db.memo_user.getIndexes()
+[
+        {
+                "v" : 2,
+                "key" : {
+                        "_id" : 1
+                },
+                "name" : "_id_"
+        },
+        {
+                "v" : 2,
+                "key" : {
+                        "id" : 1
+                },
+                "name" : "id_1",
+                "unique" : true
+        }
+]
+> db.getCollection('memo_user').createIndex({name:"qwer"});
+{
+        "ok" : 0,
+        "errmsg" : "Error in specification { key: { name: \"qwer\" }, name: \"name_qwer\" } :: caused by :: Unknown index plugin 'qwer'",
+        "code" : 67,
+        "codeName" : "CannotCreateIndex"
+}
+> db.memo_user.createIndex({name:"qwer"});
+{
+        "ok" : 0,
+        "errmsg" : "Error in specification { key: { name: \"qwer\" }, name: \"name_qwer\" } :: caused by :: Unknown index plugin 'qwer'",
+        "code" : 67,
+        "codeName" : "CannotCreateIndex"
+}
+> db.memo_user.insert({name: "asdf", password: "1234"});
+WriteResult({ "nInserted" : 1 })
+> db.memo_user.find()
+{ "_id" : ObjectId("62eb1e889dcbc801983fff07"), "name" : "asdf", "password" : "1234" }
+> db.memo_user.find().pretty()
+{
+        "_id" : ObjectId("62eb1e889dcbc801983fff07"),
+        "name" : "asdf",
+        "password" : "1234"
+}
+> db.memo_user.drop()
+true
+> db.getCollection('memo_user').createIndex({id:"q"}, {unique:true});
+{
+        "ok" : 0,
+        "errmsg" : "Error in specification { key: { id: \"q\" }, name: \"id_q\", unique: true } :: caused by :: Unknown index plugin 'q'",
+        "code" : 67,
+        "codeName" : "CannotCreateIndex"
+}
+> db.memo_user.drop()
+false
+> db.memo_user.find().pretty()
+> db.memo_user.createIndex({userid:1}, {unique:true})
+{
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "createdCollectionAutomatically" : true,
+        "ok" : 1
+}
+> db.memo_user.find().pretty()
+> db.memo_user.insert({userid: "jieun", username: "지은", userpw: "3216"});;;
+WriteResult({ "nInserted" : 1 })
+> db.memo_user.find().pretty()                                           );
+{
+        "_id" : ObjectId("62eb249f9dcbc801983fff08"),
+        "userid" : "jieun",
+        "username" : "지은",
+        "userpw" : "3216"
+}
+>
+> db.memo_user.insert({userid: "jieun", username: "지은", userpw: "3216"});
+WriteResult({
+        "nInserted" : 0,
+        "writeError" : {
+                "code" : 11000,
+                "errmsg" : "E11000 duplicate key error collection: nodejs.memo_user index: userid_1 dup key: { userid: \"jieun\" }"
+        }
+})
+> db.memo_user.insert({userid: "lsy", username: "이수연", userpw: "3215"});
+WriteResult({ "nInserted" : 1 })
+> db.memo_user.insert({userid: "lsy", username: "수연", userpw: "3215"}););
+WriteResult({
+        "nInserted" : 0,
+        "writeError" : {
+                "code" : 11000,
+                "errmsg" : "E11000 duplicate key error collection: nodejs.memo_user index: userid_1 dup key: { userid: \"lsy\" }"
+        }
+})
+> db.memo_user.insert({userid: "suyeon", username: "수연", userpw: "3215"});
+WriteResult({ "nInserted" : 1 })
+> db.memo_user.find().pretty()                                           );;
+{
+        "_id" : ObjectId("62eb249f9dcbc801983fff08"),
+        "userid" : "jieun",
+        "username" : "지은",
+        "userpw" : "3216"
+}
+{
+        "_id" : ObjectId("62eb25759dcbc801983fff0a"),
+        "userid" : "lsy",
+        "username" : "이수연",
+        "userpw" : "3215"
+}
+{
+        "_id" : ObjectId("62eb258d9dcbc801983fff0c"),
+        "userid" : "suyeon",
+        "username" : "수연",
+        "userpw" : "3215"
+}
+> memo_user
+uncaught exception: ReferenceError: memo_user is not defined :
+@(shell):1:1
+> db.memo_user.find({userid:{username:"수연"}}).pretty();
+> db.memo_user.find({username:"수연"}}).pretty();;;;;;;;;
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:33
+> db.memo_user.find({username:"수연"}).pretty();;
+{
+        "_id" : ObjectId("62eb258d9dcbc801983fff0c"),
+        "userid" : "suyeon",
+        "username" : "수연",
+        "userpw" : "3215"
+}
+> db.memo_user.find({userpw:"3215"}).pretty();;;;
+{
+        "_id" : ObjectId("62eb25759dcbc801983fff0a"),
+        "userid" : "lsy",
+        "username" : "이수연",
+        "userpw" : "3215"
+}
+{
+        "_id" : ObjectId("62eb258d9dcbc801983fff0c"),
+        "userid" : "suyeon",
+        "username" : "수연",
+        "userpw" : "3215"
+}
+> db.memo_save.insert({userid: "suyeon", date: , title: "오늘할일", contents: "});
+uncaught exception: SyntaxError: expected expression, got ',' :
+@(shell):1:45
+> db.memo_save.insert({userid: "suyeon", date: ISODate(), title: "오늘할일", contents: "없음"});;
+WriteResult({ "nInserted" : 1 })
+> db.memo_save.find().pretty();                                               "});        음"});
+{
+        "_id" : ObjectId("62eb508b9dcbc801983fff0d"),
+        "userid" : "suyeon",
+        "date" : ISODate("2022-08-04T04:52:27.446Z"),
+        "title" : "오늘할일",
+        "contents" : "없음"
+}
+> TimeZone
+uncaught exception: ReferenceError: TimeZone is not defined :
+@(shell):1:1
+> db
+nodejs
+>
