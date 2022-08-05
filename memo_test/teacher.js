@@ -89,7 +89,8 @@ router.route('/process/login').post(function(req, res) {
 				res.write('<div><p>사용자 아이디 : ' + userid + '</p></div>');
 				res.write('<div><p>사용자 닉네임 : ' + username + '</p></div>');
 				res.write('<div><p>사용자 패스워드 : ' + userpw + '</p></div>');
-				res.write("<br><br><a href='/public/login.html'>다시 로그인하기</a>");
+				// res.write("<br><br><a href='/public/login.html'>다시 로그인하기</a>");
+				res.write("<br><br><a href='/public/memo.html'>메모하기</a>");
 				res.end();
 			} 
             else {  // 조회된 레코드가 없는 경우 실패 응답 전송
@@ -108,8 +109,33 @@ router.route('/process/login').post(function(req, res) {
 	}
 });
 
+router.route('/process/memo').post(function(req, res) {
+	console.log('/process/memo  라우터 호출됨.');
+	try {
+		// var paramAuthor = req.body.author;
+		var paramTitle = req.body.title;
+        var paramContents = req.body.contents;
+		// var paramCreateDate = req.body.date;
+		// console.log('작성자 : ' + paramAuthor);
+		console.log('제목 : ' + paramTitle)
+		console.log('내용 : ' + paramContents);
+		// console.log('일시 : ' + paramCreateDate);
+        res.writeHead(200, {'Content-Type':'text/html;charset=utf8'});
+        res.write('<p>메모가 저장되었습니다.</p>');
+		res.write(paramTitle + '<br>' + paramContents)
+		res.write('<div><input type="button" value="다시 작성" onclick="javascript:history.back()"></div>');
+        res.end();
+	} catch(err) {
+		console.log(err);
+	}			
+});
+
 // 라우터 객체 등록
 app.use('/', router);
+
+app.get('/', function(req, res) {
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+})
 
 // 사용자를 인증하는 함수
 var authUser = function(database, id, password, callback) {

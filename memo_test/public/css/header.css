@@ -53,7 +53,7 @@
 }
 
 #header .menubar .gnb .dropdown li .menu-big{
-    font-family: 'EliceDigitalBaeum';
+    font-family: 'EarlyFontDiary';
     color: black;
     font-size: 20px;
     font-weight: 600;
@@ -74,7 +74,7 @@
 #header .menubar .gnb .dropdown li .menu-small {
     display: none;
     background-color: white;
-    font-family: "EliceDigitalBaeum";
+    font-family: "EarlyFontDiary";
     font-size: 16px;
     line-height: 30px;
     padding-top: 23px;

@@ -5,54 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEMO</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/memo.css">
 </head>
 <style>
-    @font-face {
-        font-family: 'EarlyFontDiary';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EarlyFontDiary.woff2') format('woff2');
-        font-weight: normal;
-        font-style: normal;
-    }
-    *{
-        text-align: center;
-        font-family: 'EarlyFontDiary';
-        font-size: large;
-    }
-    .memo{
-        display: inline-block;
-        text-align: center;
-        /* border: 1px solid aquamarine; */
-        width: fit-content;
-        height: auto;
-        background-color: yellow;
-    }
-    button{
-        border: 0;
-        width: 100px;
-        height: 30px;
-        cursor: pointer;
-        /* padding: 10px; */
-    }
-    #save{
-        background-color: green;
-    }
-    #reset{
-        background-color: red;
-    }
-    input{
-        border: 0;
-    }
-    textarea{
-        border: 0;
-        text-align: left;
-    }
-    .input_title{
-        width: 220px;
-    }
 </style>
 <body>
     <div class="memo">
-        <form method="post" action="/process/index">
+        <form method="post" action="/process/memo">
             <div class="title">
                 <input type="text" name="title" class="input_title" placeholder="제목">
             </div>
